@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D0DFAAE2-2FB3-4015-A3FC-1A8580388BDD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PointOfSale_Server</RootNamespace>
+    <AssemblyName>PointOfSale_Server</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\FoodOrder.cs" />
+    <Compile Include="Classes\Managers\MessageManager.cs" />
+    <Compile Include="Classes\Managers\SaleManager.cs" />
+    <Compile Include="Classes\Messages\MessageBase.cs" />
+    <Compile Include="Classes\Messages\OrderUpdateMessage.cs" />
+    <Compile Include="Classes\Messages\PaymentAcceptedMessage.cs" />
+    <Compile Include="Classes\Messages\UpdateTableStatusMessage.cs" />
+    <Compile Include="Classes\Tables\HorizontalTable.cs" />
+    <Compile Include="Classes\OrderItem.cs" />
+    <Compile Include="Classes\Tables\RoundTable.cs" />
+    <Compile Include="Classes\Tables\TableBase.cs" />
+    <Compile Include="Classes\Tables\VerticalTable.cs" />
+    <Compile Include="Forms\AcceptPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AcceptPayment.Designer.cs">
+      <DependentUpon>AcceptPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreateOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateOrder.Designer.cs">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EndOfDayReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EndOfDayReport.Designer.cs">
+      <DependentUpon>EndOfDayReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\KitchenQueue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KitchenQueue.Designer.cs">
+      <DependentUpon>KitchenQueue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SeatingChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeatingChart.Designer.cs">
+      <DependentUpon>SeatingChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AcceptPayment.resx">
+      <DependentUpon>AcceptPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateOrder.resx">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EndOfDayReport.resx">
+      <DependentUpon>EndOfDayReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeatingChart.resx">
+      <DependentUpon>SeatingChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ResturantLayout.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RoundTable_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RoundTable_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RoundTable_Orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RoundTable_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RoundTable_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RoundTable_Orange.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\RoundTable_Purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RoundTable_Yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable_Orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable_Purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable_Yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable2_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable2_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable2_Orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable2_Purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable2_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable2_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LongTable2_Yellow.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
